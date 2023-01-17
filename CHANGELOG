@@ -1,0 +1,194 @@
+	9/1 3:49 - worked on seeding methods today, not really sure how to do it still. the way i did it with the abellian sandpile works for a single pile of spreading sand, but not multiple, since it works recursively and the first seed to spread just fills up the whole box. tried to make a loop that cycles through the whole array and grows what it finds by one, but I am running into the same problem.
+	keep looking into the loop, there may be a solution? consider separate loops for each type of element, with somehting that only looks for those terrain types. also consider changing the pattern of spread.
+
+	9/2 10:48 - messed with the generation, have something close. use the sandpile fall pattern for growth, but then choose a single point to grow out from. you have the second part written already, just copy the spread from the sandpile. still havent worked out how to get multiple growing at once.
+
+	6:01 - COLORS AND TALL GRASS LETS FUCLKIGNG  GOOOOOO
+
+	9/4 10:07 - roads, trees, and pokecenters/marts. need to add checking for if the latter of the mart or center is placed on a road so it doesnt block the way. need to add boulder placements.
+
+	7:28 - boulders are done, good enough. not like generation looking awesome really matters anyway! ready to be wrapped up!
+
+	9/8 11:43 - figured out the struct thing to store maps/world in a single instance, now need to take inputs and generate diff maps
+
+	9/9 5:48 - can move around world. need to make teleport, and change generation on the edges of the map. code is ugly :(
+
+	9/12 1:56 - cleaned up code, maps are actually being stored now! fixed coordinates, implemented teleport/fly command. still need to do road matching and edge roads
+
+	10:07 - road matching and edges work now, but at what cost? uglier maps, thats what. and remember when the 399-401 range didnt work? they do now, think this assignment is over.
+
+	9/13 5:18 - added mart and center appearance rates. map is double printing, dont know why. solution: only make it create the new map in the if, then just print it straight up after?
+
+	9:36 - DOESNT DOUBLE PRINT ANYMORE LETS GO, just made it " %c" instead of "%c" !!
+
+	9/14 1:27 - fixed a small map edge issue, some error handling, ready to wrap up
+
+	START OF ASSIGNMENT 1-03
+
+	9/15 8:40 - go chiefs! implemented MOST of heap.c but no testing... dont know how to map to the end of the heap to add a non-root node. once i figure that out, that will basically solve the deinit issue as well. may require refactoring to exploit an ARRAY-BASED heap?
+
+	9/16 11:02 - array heap imp is done, but you NEED TO CHANGE THE LANGUAGE TO ARRAY BASED i.e. 2i, 2i+1
+
+	5:28 - lots of changes to make it into array based... im very unsure if it will work, check heapifyDown
+
+	9/18 5:00 - redid the priority queue but with a linked list cuz i got scared... but at least it works!
+
+	9/19 10:54 - made the terrain into enums typdefed as terrain. generation works the same. all need to do now is implement djikstras
+
+	9/22 10:59 - debugged the rest of the heap. there were issues i did not know about!! djikstras tomorrow :(
+
+	9/23 9:59 - fixed yet another minor bug, the heap now works exactly as it should. heap is indexed starting at 1 in order to exploit array implementation, index 0 is empty and should not be touched
+
+	10:36 - implemented exit terrain, just a road that acts as a border for npcs
+
+	5:57 - implemented a bit of code that puts all of the cells in an appropriately sized heap. need to put the cell where the player is located in first in order to start unveiling the weights of the cells in an appropriate way.
+
+	9/26 11:36 - pretty much good to start working on djikstra now, fixed some bugs, made a weight map. Having trouble with pop(), as nulling the last node is a little dificult, but maybe its not necessary since the size is being decreased?
+
+	2:02 - tenative imp of djikstra, cross your fingers, it is still untested
+
+	11:21 - so it goes through the entire map now! but it needs more fixes. i have a check for edge cases already, but need to make it so that tiles with a travel time of INT_MAX are not even added into the queue. I think it is causing int overflow which messes stuff up
+
+	9/27 12:21 - ITS MOSTLY WORKING, get your printout to work correctly and you can work from there. something is up with the edges, where they turn out as 0? but maybe thats right. JUST GET THE PRINTOUT TO WORK
+
+	9/30 11:37 - error when creating the list of npc's and trying to print. more than one are generated (i think), but using the dynamic sizeof thing for arrays, it says the length of the array is only 1. definitely investigate the * in the first sizeof though
+
+	4:51 - look at where the npcs are printing, something is up with assigning them x and y s.t. they are all put at 0x0
+
+	10/3 2:41 - started implementing move stuff, still broken. should implement a search to go thru the npc list. maybe npc list should be global?
+
+	12:15 - we did it joe... more bug fixes, conversion to character map done. implementing move should be easy now, just try not to cry
+
+	10/4 12:21 - more bug fixes... still possible to spawn guys on other guys, but we will see ig. still need to implement movement!
+
+	10/4 9:24 - just remember after this day you are in eternal debt to Ishan. refactored how characters work entirely. tomorrow we implement movement :'(
+
+	10/5 1:15 - fixed some more minor stuff, p(acer) works now! i just have to do the rest now...
+	
+	2:00 - everything but hiker and rival are working, some seg fault pathing issue
+
+	7:36 - DONE BITCH LETS GOOOOOOOO
+
+	10/13 7:17 - started to imp curses stuff, but the printing is not happening correctly... trying to find sheaffer's recommendations
+
+	10/14 10:38 - added refresh() command in the printmap, but still some weird formatting error happening... some characters print wrong?
+
+	10/16 4:19 - should probably change pc in main to a pointer or write a pc search function to keep the pc the same over time. curse input is working, just need it to appear on the screen
+
+	10/17 10:48 - pc move works once, then deletes the pc, very weird. no idea why it is happening, check putting tmp back into heap
+
+	2:04 - pc move fully operational, r and h pathing works now thanks to the search_pc function... need to do behavioirs
+
+	12:05 - after a minor crisis, shit works again. I think identifying hostile npcs has to be done on the player turn... building access is good!
+
+	10/18 5:04 - printing trainers works, BUT needs to scroll. .... everything else works
+
+	5:14 - arrows still dont work, but otherwise seems to be good
+
+	7:14 - changed up and down to be correct, still not sure why arrows dont work
+
+	10:01 - LETS GOO... WGETCH RETURNS AN INT NOT A CHAR WOOOO LETS GOOOOOOO
+
+	10:58 - had to do some more emergency stuff, but it works as directed now woohoo (added proper spacing)
+
+	//BEGINNING OF CPP
+
+	10/23 3:47 - bringing in methods slowly, focusing on classes for players and maps
+
+	10/24 10:18 - heap.h imports dont seem to be happening correctly, but we are moving along with everything else! watch line 99, not sure if that is how we should do that
+
+	2:41 - makefile and some config stuff for default constructors, not a huge ammount done... i dislike converting this
+
+	10/25 12:04 - fixed heap.h importing, needed to be compiled in g++ and cast the malloc in initialization. distmap implementation
+	
+	5:35 - redid everthing from scratch, and i think we are good aside from mvoement, getting invalid pointer errors/sigabrts from trying to move the pc
+
+	9:35 - have to figure out how to delete players after they move
+
+	10/26 11:52 - solution is on the horizon, having a seg fault issue when trying to print the new map. could be making a "new map" in the function?
+	
+	2:40 - movement to a different map works! need to add checking for if the map already exists tho. moving back to an old map causes a seg fault
+
+	7:25 - thanks sheaffer for prompting me to redo the whole OOD thing, all finished now!
+
+	10/31 10:55 - strcat is having a seg fault and i dont know why!
+
+	6:00 - got all the setup stuff working, now just to handle the input
+
+	11/1 12:22 - progress is slow but pokemon.csv handling is done, moving onto move. SHOULD MAKE CLASS-SPECIFIC PRINTS
+
+	4:57 - made the data structures into structs, all that is left is stats, poke types, experience, and poke species
+
+	9:32 - we all done!
+
+	11/4 6:00 - fixed fly, got parsing into a helper method, all values stored in vectors in the world object.
+
+	11/6 4:19 - got pokemon creation working, outside of moves. need to make random generation do its thing and have a pop up
+
+	11/7 11:10 - working on move assignment, lack of moves at level still an issue --> (if loopcount > moveset.size, level++)
+
+	11:51 - got everything but distance calculation for pokemon leveling done... woohoo
+
+	11/8 12:51 - thank you sheaffer for talking about the move method id in class... would have forgotten about that. everything is done now!!
+
+	11/12 4:43 - bag and pokemon menus are working... need to implement battles and using items
+
+	11/13 4:10 - items work from bag to pokemon... need wild poke battles / catching pokemon
+
+	11:08 - when sending pokemon back, a bunch of garbage is recieved instead of the captured pokemon... check newLoc area? char_map my_pokemon after that?
+
+	11/14 10:50 - new pokemon seems to be destroyed when playermove is over, just changed to " *pokemon = new ppokemon_char", UNTESTED
+
+	11:33 - NO WAY THAT SHIT WORKED HAHAHAHAHAHAHHA
+
+	11:46 - sf when trying to change primary pokemon
+
+	3:25 - test the type id assignment in make_pokemon
+
+	6:02 - battle turns keep working on that
+
+	8:20 - switching between pokemon in and out of battle is good (at least for wild pokemon)
+
+	8:32 - run away mechanic is done
+
+	8:37 - i think the whole wild pokemon battle is finished. still need to make teleport to nearest med center and heal/fill bag stuff + trainer battle
+
+	11/15 10:52 - little bug fixes for wild battle.
+
+	12:18 - fixed makefile, started on trainer battles + a little interaction flavor
+
+	11/16 11:05 - copied stuff over from wild battler into trainer battler, need to update 'p' references to enemy pokemon
+
+	11/17 2:43 - trainer battles work now! only thing left is building implementation
+
+	3:12 - all done.
+
+	11:23 2:37 - heehee just kidding added a bit more for quality of life
+
+	//assignment 1.10 
+
+	11/28 10:44 - added pokebucks (but no way to spend) and changed damage in the game
+
+	11:07 - pokecenter has a little menu now, with same functionality + incomplete stored pokemon list
+
+	3:02 - money purchases work
+
+	5:44 - catch chances are a thing now and work
+
+	5:57 - added pokemon storage for overflow (UNTESTED), but no way to access
+
+	11/29 12:20 - still a bug with wild pokemon capture fails (instant battle over), and cannot exit the center menu (deleting something?)
+
+	4:17 - center menu works as far as i can tell w/ good inputs
+
+	4:36 - stored mons having some trouble with display
+
+	4:48 - display is fine now, just need to add some stuff about swapping and exiting
+
+	9:15 - writing type defining (snoozefest)... will continue tomorrow
+
+	11/30 10:13 - finished up the type stuff, tested and works... think im done
+
+	11:46 - just need to write swapper code for pc storage and that will actually be everything
+
+	1:49 - swapping is done.... crazy life moment

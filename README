@@ -1,0 +1,12 @@
+pokemon game! 
+Added for 1.10: pokebucks to be won from trainers and able to be spent on items at the pokemart,
+added pokemon storage for pokemon caught after the first 6 that can be accessed and swapped at the pokecenter, 
+changed catch rates for pokemon, so the pokeball can miss or the pokemon can escape from the ball.
+Also added bonuses for attack-types going against certain defending types.
+
+command 'g' puts a random pokemon into storage
+'p' shows current pokemon
+
+in the terminal do make, then run assignment1_10
+
+written on the VM, just in case that makes an impact
